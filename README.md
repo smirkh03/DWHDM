@@ -1,2 +1,2 @@
 # DWHDM
-Datawarehouse Data Mining MSc course
+Datawarehouse Data Mining MSc course exercises
