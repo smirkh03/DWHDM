@@ -116,7 +116,7 @@ FROM
 -- (v) For each party, find the total number of seats won, i.e the number of constituencies in which they were the 
 -- winning party. Order the rows by descending total number of seats.
 WITH PARTY_WINS AS (
-SELECT UKNUM, PARTY, UKVOTES
+SELECT UKNUM, PARTY
     FROM UKRESULTS R1
     GROUP BY R1.UKNUM, R1.PARTY, UKVOTES
     HAVING R1.UKVOTES = (SELECT MAX(UKVOTES) FROM UKRESULTS R2 WHERE R2.UKNUM = R1.UKNUM)
