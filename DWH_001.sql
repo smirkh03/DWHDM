@@ -85,6 +85,13 @@ SELECT U.UKAREA, SUM_UKVOTES AS "TOTAL VOTE", ROUND(((SUM_UKVOTES/UKELECTORS) * 
     WHERE (SUM_UKVOTES/UKELECTORS) < 0.65
     ORDER BY TURNOUT;
 
+-- Solution from tutor
+SELECT U.UKAREA, SUM(UKR.UKVOTES) AS "TOTAL VOTE", ROUND(100 * SUM(UKR.UKVOTES) / U.UKELECTORS, 2) AS TURNOUT
+    FROM UKCONSTS U
+    INNER JOIN UKRESULTS UKR ON UKR.UKNUM = U.UKNUM
+    GROUP BY U.UKAREA, U.UKELECTORS
+    HAVING SUM(UKR.UKVOTES) < 0.65 * U.UKELECTORS
+    ORDER BY TURNOUT;
 
 -- (iii) Find the constituency name and turnout in constituencies which have at least 5000 more registered voters than the 
 -- average number of registered voters in a constituency. Order the rows by descending turnout.
